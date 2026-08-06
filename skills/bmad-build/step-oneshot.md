@@ -1,4 +1,4 @@
-# Step One-Shot: Implement, Review, Present
+# Step One-Shot: Implement, Review, Verify, Present
 
 You reach this step from step 2, or from step 1 when resuming a spec whose `route` is `oneshot`. `{spec_file}` already exists.
 
@@ -68,6 +68,14 @@ For each group:
 
   Do not edit old entries or check for duplicates.
 
+### Verify
+
+Run the project's tests against the post-review code. Tests are run, never faked — never report a result you did not observe.
+
+1. Infer how this project runs tests (task-runner scripts, `Makefile`, test dirs/config). Run the **unit / smoke** tier for regressions.
+2. If **integration / e2e / api** tests exist and are runnable locally without remote side effects or credentials, run them too — not just unit tests. If a real-test tier needs remote infra, credentials, or paid calls, mark it **Blocked** and report it rather than faking or skipping silently.
+3. On failure: if trivially fixable, patch and re-run the affected tier. If a failure reveals the intent or approach was wrong (not a trivial defect), HALT and present to the human — a one-shot that fails real tests was misrouted.
+
 ### Finalize Spec
 
 Update `{spec_file}`:
@@ -89,6 +97,7 @@ Give the user a short summary — one or two sentences:
 
 - What changed.
 - Review result, including anything deferred.
+- Verification result: test tiers run and their outcomes. Call out any **Blocked** tiers that need CI or a real environment — never present a blocked tier as passed.
 - Commit hash, if you made one.
 
 Do not list files, repeat the spec, or walk through what you did unless asked.

@@ -81,4 +81,4 @@ If a layer's instruction requires subagents and none are available, for each suc
 
 ## NEXT
 
-Read fully and follow `[[bmad-snapshot:step-05-present.md]]`
+Read fully and follow `[[bmad-snapshot:step-05-verify.md]]`

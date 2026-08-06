@@ -362,7 +362,7 @@ class RenderSkillTests(unittest.TestCase):
             encoding="utf-8",
         )
         snap = rs.render(ws.project, skill).parent
-        for name in ("step-05-present.md", "step-oneshot.md"):
+        for name in ("step-06-present.md", "step-oneshot.md"):
             rendered = (snap / name).read_text(encoding="utf-8")
             self.assertIn("OPEN-SPEC-SENTINEL {project-root} {spec_file}", rendered)
 
