@@ -5,6 +5,14 @@ description: Authors and updates customization overrides for installed BMad skil
 
 # BMad Customize
 
+## INITIALIZATION
+
+### Platform Overrides
+
+If `{project-root}/_bmad/_config/ides/claude-code.yaml` exists, load and apply behavioral overrides from `{project-root}/_bmad/_shared/claude-code-overrides.md`.
+
+If `{project-root}/_bmad/_config/ides/codex.yaml` exists, load and apply behavioral overrides from `{project-root}/_bmad/_shared/codex-overrides.md`.
+
 Translate the user's intent into a correctly-placed TOML override file under `{project-root}/_bmad/custom/` for a customizable agent or workflow skill. Discover, route, author, write, verify.
 
 Scope v1: per-skill `[agent]` overrides (`bmad-agent-<role>.toml` / `.user.toml`) and per-skill `[workflow]` overrides (`bmad-<workflow>.toml` / `.user.toml`). Central config (`{project-root}/_bmad/custom/config.toml`) is out of scope — point users at the [How to Customize BMad guide](https://docs.bmad-method.org/how-to/customize-bmad/).

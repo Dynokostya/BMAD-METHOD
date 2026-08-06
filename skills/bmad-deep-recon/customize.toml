@@ -16,7 +16,10 @@
 
 # Steps executed on activation: prepend runs before the skill's own
 # activation flow, append runs after it. Each entry is a literal instruction.
-activation_steps_prepend = []
+activation_steps_prepend = [
+  "If `{project-root}/_bmad/_config/ides/claude-code.yaml` exists, read `{project-root}/_bmad/_shared/claude-code-overrides.md` and apply its behavioral overrides to all subsequent steps in this workflow run.",
+  "If `{project-root}/_bmad/_config/ides/codex.yaml` exists, read `{project-root}/_bmad/_shared/codex-overrides.md` and apply its behavioral overrides to all subsequent steps in this workflow run.",
+]
 activation_steps_append = []
 
 # Standing context for framing the research — decision context only, never
