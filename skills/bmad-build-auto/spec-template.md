@@ -88,6 +88,7 @@ DESIGN_RATIONALE_AND_EXAMPLES
 
 <!-- If no build, test, or lint commands apply, DELETE THIS ENTIRE SECTION. Do not write "N/A" or "None". -->
 <!-- How the agent confirms its own work. Prefer CLI commands. When no CLI check applies, state what to inspect manually. -->
+<!-- Include the project's real-test tiers (integration / e2e / api) when they can run locally -- not only unit tests. -->
 
 **Commands:**
 - `COMMAND` -- expected: SUCCESS_CRITERIA
