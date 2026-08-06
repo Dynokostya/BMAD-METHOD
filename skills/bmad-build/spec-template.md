@@ -8,7 +8,9 @@ review_loop_iteration: 0 # incremented by step-04 before each review loopback
 context: [] # optional: `{project-root}/`-prefixed paths to project-wide standards/docs the implementation agent should load. Keep short — only what isn't already distilled into the spec body.
 ---
 
-<!-- Target: 900–1300 tokens. Above 1600 = high risk of context rot.
+<!-- Target: focused single-goal spec. Structural drift signals: > 15 tasks, > 5 code blocks,
+     > 12 subsection headings, or > 30 lines of Design Notes typically indicate scope creep.
+     Token count via wc -w × 1.3 is informational.
      Never over-specify "how" — use boundaries + examples instead.
      Cohesive cross-layer stories (DB+BE+UI) stay in ONE file.
      IMPORTANT: Remove all HTML comments when filling this template. -->

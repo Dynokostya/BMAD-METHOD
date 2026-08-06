@@ -22,7 +22,13 @@
 4. Read `[[bmad-snapshot:spec-template.md]]` fully. Fill it out from the intent and investigation, resolving the template's `date` field to the current system date. Put the investigation into `## Code Map`: paths, symbols or lines, what to reuse, and what not to change. Implementation should work from the spec without being told the investigation again. For each intent gap, add one `## Open Questions` entry: the choice, the options, and what each option means. Never write an intent gap into the frozen block as an assumption. If `preserved_intent` is non-empty, replace the `<frozen-after-approval>` block with it before writing. Write the result to `{spec_file}`.
 5. Self-review against READY FOR DEVELOPMENT standard. For anything important that's missing: if the repository can tell you, go look and fix the spec; if a human has to decide, add an `## Open Questions` entry. Do not invent the answer.
 6. Resolve the gates before the checkpoint. Two things must be settled, in whatever order the conversation makes natural; combine them in one message when both apply.
-   - **Token count** (see SCOPE STANDARD). If the spec exceeds 1600 tokens, show the count and give the user a choice:
+   - **Structural drift** (see SCOPE STANDARD). Count these four signals in `{spec_file}`:
+     - **Tasks**: count `[ ]` checkbox lines under `## Tasks & Acceptance` → `**Execution:**`. Trip if > 15.
+     - **Code blocks**: count fenced ` ``` ` blocks in the spec body. Trip if > 5.
+     - **Heading depth**: count `###` and deeper subsection headings. Trip if > 12.
+     - **Design Notes length**: count lines in the `## Design Notes` section body. Trip if > 30.
+
+     Token count is informational only (`wc -w * 1.3 ≈ token estimate`); structural signals are the gate. If any signal trips, show the user which signals tripped, with counts, and give the user a choice:
      - **Split** — carve off secondary goals. Propose the split — name each secondary goal. For each deferred goal, append one new entry to `{{.implementation_artifacts}}/deferred-work.md` using the format below. Do not modify existing entries or look for duplicates. Rewrite the current spec to cover only the main goal — do not surgically carve sections out; regenerate the spec for the narrowed scope.
      - **Keep full spec** — accept the risks.
      ```markdown
@@ -38,7 +44,7 @@ Only when Open Questions is empty.
 
 Present summary. Display the spec file path in whatever form is clickable where you are presenting it (e.g. code citation in chat, CWD-relative path with no leading `/` in terminal). If unsure, use CWD-relative path.
 
-If token count exceeded 1600 and the user chose to keep the full spec, include the token count and explain why it may be a problem.
+If any structural drift signals tripped and the user chose to keep the full spec, list which signals tripped with their counts and explain why the spec may have lost scope discipline.
 
 After presenting the summary, display this note:
 
