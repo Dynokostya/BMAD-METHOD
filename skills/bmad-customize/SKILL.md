@@ -9,9 +9,7 @@ description: Authors and updates customization overrides for installed BMad skil
 
 ### Platform Overrides
 
-If `{project-root}/_bmad/_config/ides/claude-code.yaml` exists, load and apply behavioral overrides from `{project-root}/_bmad/_shared/claude-code-overrides.md`.
-
-If `{project-root}/_bmad/_config/ides/codex.yaml` exists, load and apply behavioral overrides from `{project-root}/_bmad/_shared/codex-overrides.md`.
+If `{project-root}/_bmad/scripts/platform-overrides.md` exists, read it and apply every section whose gating tools exist in your toolset for the rest of this session.
 
 Translate the user's intent into a correctly-placed TOML override file under `{project-root}/_bmad/custom/` for a customizable agent or workflow skill. Discover, route, author, write, verify.
 

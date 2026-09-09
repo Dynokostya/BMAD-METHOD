@@ -14,8 +14,7 @@
 # Steps to run before the standard activation (config load, greet).
 # Use for pre-flight loads, approved-stack policy checks, etc.
 activation_steps_prepend = [
-  "If `{project-root}/_bmad/_config/ides/claude-code.yaml` exists, read `{project-root}/_bmad/_shared/claude-code-overrides.md` and apply its behavioral overrides to all subsequent steps in this workflow run.",
-  "If `{project-root}/_bmad/_config/ides/codex.yaml` exists, read `{project-root}/_bmad/_shared/codex-overrides.md` and apply its behavioral overrides to all subsequent steps in this workflow run.",
+  "If `{project-root}/_bmad/scripts/platform-overrides.md` exists, read it and apply every section whose gating tools exist in your toolset to all subsequent steps in this workflow run.",
 ]
 
 # Steps to run after greet but before the workflow begins.
