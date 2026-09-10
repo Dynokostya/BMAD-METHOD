@@ -14,13 +14,6 @@ Behavioral overrides for BMad skills. They are gated on the tools your harness e
 - When asking about related but independent decisions, batch up to 4 questions in a single AskUserQuestion call
 - If a step says "HALT and ask" or "ask the user", that means: use AskUserQuestion, not plain text
 
-## task_tracking — when `TaskCreate` and `TaskUpdate` exist
-
-- When a workflow's tasks become known (from a spec, story file, or mental plan), register each work item via TaskCreate with `pending` status
-- Set each task to `in_progress` when starting work, `completed` when done
-- This supplements (not replaces) any existing checkbox or frontmatter tracking the workflow already does
-- For step-file workflows, register one task per major step or work item — not one per micro-action
-
 ## plan_tracking — when `update_plan` exists
 
 - When a workflow's tasks become known (from a spec, story file, or mental plan), register the full task list via `update_plan`
