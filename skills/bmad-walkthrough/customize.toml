@@ -10,7 +10,7 @@
 #   arrays-of-tables with `code`/`id`: replace matching items, append new ones.
 
 # Executed when the workflow starts.
-on_activation = ""
+on_activation = "If `{project-root}/_bmad/scripts/platform-overrides.md` exists, read it and apply every section whose gating tools exist in your toolset to all subsequent steps in this workflow run."
 
 # Executed when a block is first presented.
 on_block_activation = ""

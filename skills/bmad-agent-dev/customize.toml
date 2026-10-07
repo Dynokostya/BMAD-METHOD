@@ -18,7 +18,9 @@ icon = "💻"
 # Steps to run before the standard activation (persona, config, greet).
 # Overrides append. Use for pre-flight loads, compliance checks, etc.
 
-activation_steps_prepend = []
+activation_steps_prepend = [
+  "If `{project-root}/_bmad/scripts/platform-overrides.md` exists, read it and apply every section whose gating tools exist in your toolset to all subsequent steps in this workflow run.",
+]
 
 # Steps to run after greet but before presenting the menu.
 # Overrides append. Use for context-heavy setup that should happen
