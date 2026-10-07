@@ -15,7 +15,9 @@ review_loop_iteration: 0 # incremented by step-04 before each review loopback
 context: [] # optional: `{project-root}/`-prefixed paths the implementation agent should load: companions the ticket names that this work needs, and project-wide standards. Keep short — only what isn't already distilled into the plan body.
 ---
 
-<!-- Target: 900–1300 tokens (less if route is oneshot). Above 1600 = high risk of context rot.
+<!-- Target: one focused goal (smaller if route is oneshot). Scope drift signals: > 15 tasks,
+     > 5 code blocks, > 12 subsection headings, or > 30 lines of Design Notes.
+     Token count via wc -w × 1.3 is informational.
      Never over-specify "how" — use boundaries + examples instead.
      Cohesive cross-layer changes (DB+BE+UI) stay in ONE file.
      IMPORTANT: Remove all HTML comments when filling this template. -->
