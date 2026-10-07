@@ -48,7 +48,7 @@ consider upgrading to full.
 # Instruction run by HALT after writing the terminal result.
 # Empty means no extra terminal behavior.
 
-on_complete = ""
+on_complete = "If the final status is `built` or `done`, invoke the `bmad-real-test` skill in headless mode on the change this run built, passing `{plan_file}`. Otherwise, or if that skill is not installed, skip this."
 
 # Handoff for the implementation subagent in step 03. The whole execution
 # recipe — a subagent by default, but an override may run it any other way

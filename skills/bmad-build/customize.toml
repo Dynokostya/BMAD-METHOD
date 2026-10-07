@@ -48,7 +48,7 @@ consider upgrading to full.
 # Instruction run after Build completes.
 # Empty means no extra completion behavior.
 
-on_complete = ""
+on_complete = "Invoke the `bmad-real-test` skill on the change this run built, passing `{plan_file}`. If that skill is not installed, skip this."
 
 # Optional instructions for opening a completed plan. The empty default leaves
 # the plan closed. Override this with the application and behavior you prefer.
