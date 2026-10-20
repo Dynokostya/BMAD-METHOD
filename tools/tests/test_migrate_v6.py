@@ -787,6 +787,27 @@ class FoldSpecsTests(unittest.TestCase):
         self.assertIn("- R1 (CAP-1): A player sees the ball follow a physically plausible arc. Success:", text)
         self.assertIn("- Simulation runs at 120 Hz on the minimum device.\n", text)
 
+    def test_a_capability_with_a_title_in_its_bold_span_still_folds(self):
+        epic = self.write_epic_with_spec()
+        spec = (epic / "spec-ball" / "spec-ball.md").read_text(encoding="utf-8")
+        spec = spec.replace("- **CAP-1**\n", "- **CAP-1 — Ball arc** (FR-1, FR-2)\n").replace(
+            "- **CAP-2**\n  - **intent:** A player sets the launch angle and sees the arc change.\n"
+            "  - **success:** The arc updates within one frame.\n",
+            "- **CAP-2: Launch angle** (FR-3)\n",
+        )
+        write(epic / "spec-ball" / "spec-ball.md", spec)
+
+        (fold,) = self.fold()["folded"]
+
+        self.assertEqual(fold["ids"], {"CAP-1": "R1", "CAP-2": "R2"})
+        text = (epic / "epic-ball.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "- R1 (CAP-1): A player sees the ball follow a physically plausible arc. "
+            "Success: Carry distance within 3% of the reference table.\n",
+            text,
+        )
+        self.assertIn("- R2 (CAP-2): Launch angle (FR-3)\n", text)
+
     def test_a_moving_companions_links_still_reach_their_files(self):
         epic = self.write_epic_with_spec()
         write(

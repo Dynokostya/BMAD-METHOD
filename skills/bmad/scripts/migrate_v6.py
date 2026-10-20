@@ -388,7 +388,7 @@ SPEC_FOLDER = re.compile(r"\Aspec-(?P<slug>[A-Za-z0-9][A-Za-z0-9._-]*)\Z")
 CAP_ID = re.compile(r"\bCAP-(\d+)\b")
 R_LINE = re.compile(r"^\s*-\s+R(\d+)\b", re.MULTILINE)
 R_SOURCE = re.compile(r"^- R\d+ \((.*?)\)", re.MULTILINE)
-CAPABILITY = re.compile(r"\A-\s+\*\*(CAP-(\d+))\*\*\s*(.*)\Z")
+CAPABILITY = re.compile(r"\A-\s+\*\*(CAP-(\d+))(?:\*\*|\s*[—–:-]\s+)\s*(.*)\Z")
 CAPABILITY_FIELD = re.compile(r"\A\s+-\s+\*\*(intent|success):\*\*\s*(.*)\Z")
 HEADING = re.compile(r"(?m)^## (.+?)\s*$")
 SECTION_ORDER = (
@@ -696,7 +696,8 @@ def parse_spec(text: str) -> dict[str, object]:
     blocks: list[tuple[int, dict[str, str]]] = []
     for line in sections.get("capabilities", "").splitlines():
         if match := CAPABILITY.match(line):
-            current, key = {"rest": match.group(3).strip()}, "rest"
+            # A title inside the bold span leaves its closing "**" in the rest.
+            current, key = {"rest": match.group(3).replace("**", "", 1).strip()}, "rest"
             blocks.append((int(match.group(2)), current))
         elif current is not None and (field := CAPABILITY_FIELD.match(line)):
             key = field.group(1)
